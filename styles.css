@@ -1,7 +1,29 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar ul {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    right: 0;
+    list-style: none;
+}
+
+.navbar ul li {
+    padding: 0 10px;
+}
+
 .sprite {
     display: none;
+    width: 200px;
 }
 
 .poke-facts {
+    display: none;
+}
+
+#pokemon-cry {
     display: none;
 }
