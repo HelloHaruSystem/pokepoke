@@ -16,11 +16,11 @@ const pokeFactory = (id, name, pokeType1, pokeType2, sprite,
             return this._name;
         },
 
-        get _pokeType1() {
+        get pokeType1() {
             return this._pokeType1;
         },
 
-        get _pokeType2() {
+        get pokeType2() {
             if (this._pokeType2 !== null || this._pokeType2 !== undefined)
             return this._pokeType2;
         },
@@ -82,3 +82,5 @@ const pokeFactory = (id, name, pokeType1, pokeType2, sprite,
         }
     };
 };
+
+export default pokeFactory;
