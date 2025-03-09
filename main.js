@@ -52,7 +52,7 @@ async function fetchPokemon(id) {
 }
 
 const randomPokemonId = () => {
-    let randomNumber = Math.floor(Math.random() * 1025);
+    let randomNumber = Math.floor(Math.random() * 649);
     
     if (randomNumber === 0) {
         return randomNumber + 1;
