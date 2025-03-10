@@ -15,26 +15,47 @@
             <div class="navbar">
                 <h1><strong>Welcome To the random pokemon generater!</strong></h1>
                 <ul>
-                    <li>Reset</li>
-                    <li>TEST</li>
+                    <li><span>Reset</span></li>
+                    <li><span>TEST</span></li>
                 </ul>
             </div>
         </header>
         
-        <main>
-            <div class="pokemon-container">
-                <button id="random-button">Click To show a random Pokemon!</button>
-                <img src="" alt="Pokemon Sprite" class="sprite">
-                <p class="poke-facts"></p>
-                <audio controls id="pokemon-cry">
-                    <source src="" type="audio/ogg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-        </main>
+        <div class="container">
+            <!--Left side bar-->
+            <aside class="sidebar left-sidebar">
+                <p>left sidebar content</p>
+            </aside>
+
+            <!--Main content-->
+            <main>
+                <div class="pokemon-container">
+                    <button id="random-button">Click To show a random Pokemon!</button>
+                    <img src="" alt="Pokemon Sprite" class="sprite">
+                    <p class="poke-facts"></p>
+                    <audio controls id="pokemon-cry">
+                        <source src="" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </main>
+
+            <!--Right side bar-->
+            <aside class="sidebar right-sidebar">
+                <p>Right SideBar Content</p>
+            </aside>
+
+        </div>
+        
         
         <footer>
-
+            <div class="info">
+                <h4>Made by Halfdan using <a href="https://pokeapi.co/" target="_blank">PokeApi</a></h3>
+                <h5>My Links</h5>
+                <ul>
+                    <li><a href="https://github.com/HelloHaruSystem" target="_blank">Github</a></li>
+                </ul>
+            </div>
         </footer>
     </body>
 </html>

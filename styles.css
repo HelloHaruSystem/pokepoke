@@ -1,6 +1,24 @@
+/* basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+
+/* nav stuff */
 .navbar {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .navbar ul {
@@ -15,6 +33,41 @@
     padding: 0 10px;
 }
 
+/*main container*/
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.pokemon-container {
+    border: 1px solid blue;
+    border-radius: 5%;
+}
+
+/*side bar */
+.sidebar {
+    width: 200px;
+    background-color: violet;
+    padding: 20px;
+    min-height: 400px;
+    border: 1px solid black;
+}
+
+.left-sidebar {
+    text-align: left;
+}
+
+.right-sidebar {
+    text-align: right;
+}
+
+main {
+    padding: 20px;
+}
+
 .sprite {
     display: none;
     width: 200px;
@@ -25,5 +78,18 @@
 }
 
 #pokemon-cry {
+    padding-top: 5%;
     display: none;
+}
+
+footer {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: blue;
 }
