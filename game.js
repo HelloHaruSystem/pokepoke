@@ -1,3 +1,5 @@
+import { countDownStart } from "./timer.js";
+
 const gameTimer = document.getElementById('game-timer');
 const button = document.getElementsByClassName('random-button')[0];
 
@@ -12,24 +14,7 @@ const gameLoop = () => {
     }
 };
 
-const countDownStart = () => {
-    
-    if (interval) clearInterval(interval);
-
-    gameTimer.innerHTML = `Time left: ${countDown}`;
-
-    interval = setInterval(() => {
-        countDown--;
-        gameTimer.innerHTML = `Time left: ${countDown}`;
-
-        if (countDown === 0) {
-            clearInterval(interval);
-            gameTimer.textContent = "Time's up!";
-        }
-    }, 1000);
-};
-
 // eventhandlers
 button.addEventListener('click', () => {
-    countDownStart();
+    countDownStart(countDown, interval, gameTimer);
 });
