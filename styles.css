@@ -59,6 +59,12 @@ header {
     display: none;
 }
 
+#quiz-promt {
+    /*display: none;*/
+    align-self: center;
+    padding: 10px 0;
+}
+
 .pokemon-container {
     border: 1px solid teal;
     border-radius: 5%;

@@ -1,4 +1,5 @@
 import { fetchTwoMons } from "../objectAndFetch/pokeRepository.js";
+import { getRandomQuestion } from "./gameModes.js";
 
 // pokemon frames
 const pokemonFrame = document.getElementsByClassName('pokemon-frames')[0];
@@ -19,6 +20,9 @@ let countDown = 5.00;
 let playerScore = 0;
 let interval;
 
+// current question
+const quizPromt = document.getElementById('quiz-promt');
+
 // current set of pokemons
 let currentPokemons;
 
@@ -27,6 +31,8 @@ const startGameLoop = async () => {
     startGame();
     await getCurrentMons();
     dispalyPokemons();
+    quizPromt.innerHTML = 'Hello, World!';
+    getRandomQuestion(currentPokemons, quizPromt);
 
     interval = setInterval(() => {
         
@@ -48,7 +54,7 @@ const startGame = () => {
 };
 
 const gameOver = () => {
-    score.innerHTML = 'GAME OVER'
+    score.innerHTML = `GAME OVER final score: ${playerScore}`;
     ranButton.style.display = 'inline-block';
     countDown = 5.00;
     clearInterval(interval);
