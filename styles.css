@@ -73,6 +73,13 @@ header {
     background-color: #0080801a;
 }
 
+/* When Clicking*/
+.pokemon-container:active {
+    transform: scale(0.95);
+    box-shadow: 10px -16px darkgreen;
+    border-color: darkgreen;
+}
+
 .random-button {
     background-color:chocolate;
     color: black;
