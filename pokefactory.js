@@ -56,30 +56,6 @@ const pokeFactory = (id, name, pokeType1, pokeType2, sprite,
                 return this._speed;
             }
         },
-
-        _moves: {
-            _moveName: moveName,
-            _power: power,
-            _accuracy: accuracy,
-            _pp: pp,
-            _type: moveType,
-
-            get moveName() {
-                return this._moveName;
-            },
-            get power() {
-                return this._power;
-            },
-            get accuracy() {
-                return this._accuracy;
-            },
-            get pp() {
-                return this._pp;
-            },
-            get moveType() {
-                return this._moveType;
-            }
-        }
     };
 };
 

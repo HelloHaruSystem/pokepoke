@@ -1,4 +1,4 @@
-import pokeFactory from "./pokefactory.js"
+import { fetchTwoMons } from "./pokeRepository.js";
 
 // const piplup = pokeFactory(393, 'Piplup', 'Water', '', 'sprite', 53, 51, 53, 61, 56, 40, 'Water Gun', '40', 100, 25, 'Water');
 
@@ -19,7 +19,7 @@ const oggPlayer2 = document.getElementsByClassName('pokemon-cry')[1];
 const pochama = document.getElementById('pochama');
 const logo = document.getElementById('logo');
 
-async function fetchPokemon(id) {
+const fetchPokemon = async (id) => {
     try {
         const response = await fetch(baseUrl + `${id}`);
         if (!response.ok) {
@@ -85,7 +85,6 @@ const randomPokemonId = () => {
     return randomNumber;
 };
 
-// fetchPokemon(393);
 ranButton.addEventListener('click', () => {
     const randomPokeId = randomPokemonId();
     fetchPokemon(randomPokeId);
