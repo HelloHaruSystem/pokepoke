@@ -66,6 +66,13 @@ header {
     box-shadow: 10px -16px teal;
 }
 
+/* When hovering */
+.pokemon-container:hover {
+    border-color: darkorange;  
+    box-shadow: 10px -16px darkorange;
+    background-color: #0080801a;
+}
+
 .random-button {
     background-color:chocolate;
     color: black;

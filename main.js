@@ -1,10 +1,5 @@
 import { fetchTwoMons, fetchPochama } from "./pokeRepository.js";
 
-// const piplup = pokeFactory(393, 'Piplup', 'Water', '', 'sprite', 53, 51, 53, 61, 56, 40, 'Water Gun', '40', 100, 25, 'Water');
-
-// console.log(piplup);
-
-const baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
 const sprite1 = document.getElementsByClassName('sprite')[0];
 const sprite1Facts = document.getElementsByClassName('poke-facts')[0];
 const ranButton = document.getElementsByClassName('random-button')[0];
