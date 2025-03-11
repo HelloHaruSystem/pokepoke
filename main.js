@@ -16,6 +16,9 @@ const sprite2 = document.getElementsByClassName('sprite')[1];
 const sprite2Facts = document.getElementsByClassName('poke-facts')[1];
 const oggPlayer2 = document.getElementsByClassName('pokemon-cry')[1];
 
+const pochama = document.getElementById('pochama');
+const logo = document.getElementById('logo');
+
 async function fetchPokemon(id) {
     try {
         const response = await fetch(baseUrl + `${id}`);
@@ -31,6 +34,7 @@ async function fetchPokemon(id) {
         if (spriteUrl === null) {
             spriteUrl = data.sprites.front_default;
         }
+
 
         pokemonFrame.style.display = 'flex';
         score.style.display = 'block';
@@ -86,3 +90,21 @@ ranButton.addEventListener('click', () => {
     const randomPokeId = randomPokemonId();
     fetchPokemon(randomPokeId);
 });
+
+async function fetchPochama() {
+    const pochamaId = 393;
+
+    try {
+        const response = await fetch(baseUrl + `${pochamaId}`);
+        if (!response.ok) {
+            throw new Error('Problem fetching data!')
+        }
+        const data = await response.json();
+
+        pochama.src = data.sprites.front_default;
+        logo.href = data.sprites.front_default;
+    } catch (error) {
+        console.error(error);
+    }
+};
+fetchPochama();

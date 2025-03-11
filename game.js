@@ -1,20 +1,44 @@
 import { countDownStart } from "./timer.js";
 
-const gameTimer = document.getElementById('game-timer');
-const button = document.getElementsByClassName('random-button')[0];
+// pokemon frames
+const pokemonFrame = document.getElementsByClassName('pokemon-frames')[0];
 
-let interval;
+// timer, button and score
+const gameTimer = document.getElementById('game-timer');
+const ranButton = document.getElementsByClassName('random-button')[0];
+const score = document.getElementById('score');
+
+// countdown and interval used for the timer
 let countDown = 5;
+let playerScore = 0;
 
 const gameLoop = () => {
-    let running = true;
+    ranButton.style.display = 'none';
+    let interval = setInterval(() => {
+        countDown--;
+        displayTimer();
 
-    while (running) {
-        running = false;
-    }
+        if (countDown <= 0) {
+            gameOver();
+        }
+    }, 1000);
+
+};
+
+const gameOver = () => {
+    score.innerHTML = 'GAME OVER'
 };
 
 // eventhandlers
-button.addEventListener('click', () => {
-    countDownStart(countDown, interval, gameTimer);
+ranButton.addEventListener('click', () => {
+    //countDownStart(countDown, interval, gameTimer);
+    gameLoop();
 });
+
+const displayTimer = () => {
+    if (countDown > 0) {
+        gameTimer.innerHTML = `<strong>Time left: ${countDown}</strong>`;
+    } else {
+        gameTimer.innerHTML = `<strong>Time's up!</strong>`;
+    }
+};
