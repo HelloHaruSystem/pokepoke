@@ -1,5 +1,13 @@
+import { fetchTwoMons } from "./pokeRepository.js";
+
 // pokemon frames
 const pokemonFrame = document.getElementsByClassName('pokemon-frames')[0];
+// sprite elements
+const leftSprite = document.getElementsByClassName('sprite')[0];
+const rightSprite = document.getElementsByClassName('sprite')[1];
+// pokemon text field
+const leftPokemonText = document.getElementsByClassName('poke-facts')[0];
+const rightPokemonText = document.getElementsByClassName('poke-facts')[1];
 
 // timer, button and score
 const gameTimer = document.getElementById('game-timer');
@@ -11,12 +19,17 @@ let countDown = 5.00;
 let playerScore = 0;
 let interval;
 
-const gameLoop = () => {
-    ranButton.style.display = 'none';
-    displayTimer();
-    score.innerHTML = 'score: 0';
+// current set of pokemons
+let currentPokemons;
+
+// Main game loop
+const startGameLoop = async () => {
+    startGame();
+    await getCurrentMons();
+    dispalyPokemons();
 
     interval = setInterval(() => {
+        
         countDown-= 0.01;
         displayTimer();
 
@@ -27,6 +40,13 @@ const gameLoop = () => {
     }, 10);
 };
 
+const startGame = () => {
+    ranButton.style.display = 'none';
+    score.style.display = 'block';
+    displayTimer();
+    score.innerHTML = `score: ${playerScore}`;
+};
+
 const gameOver = () => {
     score.innerHTML = 'GAME OVER'
     ranButton.style.display = 'inline-block';
@@ -35,14 +55,34 @@ const gameOver = () => {
 };
 
 const displayTimer = () => {
+    gameTimer.style.display = 'block';
+
     if (countDown > 0) {
         gameTimer.innerHTML = `<strong>Time left: ${countDown.toFixed(2)}</strong>`;
     } else {
-        gameTimer.innerHTML = `<strong>Time's up!</strong>`;
+        gameTimer.innerHTML = '<strong>Time\'s up!</strong>';
     }
 };
 
-// eventhandlers
-ranButton.addEventListener('click', () => {
-    gameLoop();
-});
+const getCurrentMons = async () => {
+    currentPokemons = await fetchTwoMons();
+};
+
+
+const dispalyPokemons = () => {
+    leftSprite.src = currentPokemons[0].sprite;
+    rightSprite.src = currentPokemons[1].sprite;
+
+    leftPokemonText.innerHTML = `<strong>Name:</strong> ${currentPokemons[0].name}<strong>`;
+    rightPokemonText.innerHTML = `<strong>Name:</strong> ${currentPokemons[1].name}<strong>`;
+    
+    leftPokemonText.style.display = 'block';
+    rightPokemonText.style.display = 'block';
+
+    leftSprite.style.display = 'block';
+    rightSprite.style.display = 'block';
+
+    pokemonFrame.style.display = 'flex';
+};
+
+export { startGameLoop };
