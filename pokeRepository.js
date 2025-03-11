@@ -18,6 +18,7 @@ const fetchRandomPokemon = async () => {
             throw new Error(`Response status: ${response.status}`);
         }
         const data = await response.json();
+        console.log(data);
         // If the pokemon doesn't have a secondary type
         const type2 = data.types[1]?.type.name || null; 
 
@@ -25,7 +26,8 @@ const fetchRandomPokemon = async () => {
         pokemon = pokeFactory(data.id, data.name, data.types[0].type.name, type2, 
                                     data.sprites.versions['generation-v']['black-white'].animated.front_default,
                                     data.stats[0].base_stat, data.stats[1].base_stat, data.stats[2].base_stat,
-                                    data.stats[3].base_stat, data.stats[4].base_stat, data.stats[5].base_stat);
+                                    data.stats[3].base_stat, data.stats[4].base_stat, data.stats[5].base_stat,
+                                    data.height, data.weight);
         
     } catch (error) {
         console.error(`Error trying to fetch data ${error}`);

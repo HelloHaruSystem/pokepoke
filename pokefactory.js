@@ -1,12 +1,13 @@
-const pokeFactory = (id, name, pokeType1, pokeType2, sprite,
-     hp, attack, defense, specialAttack, specialDefense, speed,
-      moveName, power, accuracy, pp, moveType) => {
+const pokeFactory = (id, name, pokeType1, pokeType2, sprite, height, weight,
+     hp, attack, defense, specialAttack, specialDefense, speed) => {
     return {
         _id: id,
         _name: name,
         _pokeType1: pokeType1,
         _pokeType2: pokeType2,
         _sprite: sprite,
+        _height: height,
+        _weight: weight,
 
         get id() {
             return this._id;
@@ -27,6 +28,14 @@ const pokeFactory = (id, name, pokeType1, pokeType2, sprite,
 
         get sprite() {
             return this._sprite;
+        },
+
+        get height() {
+            return this._height;
+        },
+
+        get weight() {
+            return this._weight;
         },
 
         _stats: {
@@ -56,6 +65,10 @@ const pokeFactory = (id, name, pokeType1, pokeType2, sprite,
                 return this._speed;
             }
         },
+
+        get stats() {
+            return this._stats;
+        }
     };
 };
 
