@@ -1,5 +1,5 @@
-import { fetchPochama } from "./pokeRepository.js";
-import { startGameLoop } from "./game.js";
+import { fetchPochama } from "./objectAndFetch/pokeRepository.js";
+import { startGameLoop } from "./game/game.js";
 
 // logo and title move to a ui class at some points
 const pochama = document.getElementById('pochama');

@@ -1,4 +1,4 @@
-import { fetchTwoMons } from "./pokeRepository.js";
+import { fetchTwoMons } from "../objectAndFetch/pokeRepository.js";
 
 // pokemon frames
 const pokemonFrame = document.getElementsByClassName('pokemon-frames')[0];
