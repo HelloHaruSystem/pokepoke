@@ -1,6 +1,7 @@
 import pokeFactory from "./pokefactory.js"
 
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
+let fetchCount = 0;
 
 // gets a random pokemon between gen 1 and gen 5
 const randomPokemonId = () => {
@@ -17,8 +18,10 @@ const fetchRandomPokemon = async () => {
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
+        fetchCount++;
         const data = await response.json();
-        console.log(data);
+        console.log(`Fetching data...\nPokemon ${fetchCount} Data:\n`);
+        console.log(data)
         // If the pokemon doesn't have a secondary type
         const type2 = data.types[1]?.type.name || null; 
 

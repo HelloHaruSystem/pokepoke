@@ -16,9 +16,6 @@ const fetchPokemon = async () => {
     try {
         const pokemons = await fetchTwoMons();
 
-        console.log(pokemons[0]);
-        console.log(pokemons[1]);
-
         pokemonFrame.style.display = 'flex';
         score.style.display = 'block';
         sprite1.src = pokemons[0].sprite;
