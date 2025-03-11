@@ -25,9 +25,9 @@ const fetchRandomPokemon = async () => {
 
         pokemon = pokeFactory(data.id, data.name, data.types[0].type.name, type2, 
                                     data.sprites.versions['generation-v']['black-white'].animated.front_default,
+                                    data.height, data.weight,
                                     data.stats[0].base_stat, data.stats[1].base_stat, data.stats[2].base_stat,
-                                    data.stats[3].base_stat, data.stats[4].base_stat, data.stats[5].base_stat,
-                                    data.height, data.weight);
+                                    data.stats[3].base_stat, data.stats[4].base_stat, data.stats[5].base_stat);
         
     } catch (error) {
         console.error(`Error trying to fetch data ${error}`);
@@ -40,4 +40,23 @@ const fetchTwoMons = async () => {
     return [await fetchRandomPokemon(), await fetchRandomPokemon()];
 };
 
-export { fetchTwoMons };
+const fetchPochama = async () => {
+    const pochamaId = 393;
+    let pochamaData;
+
+    try {
+        const response = await fetch(baseUrl + `${pochamaId}`);
+        if (!response.ok) {
+            throw new Error('Problem fetching Pochama!')
+        }
+        const data = await response.json();
+
+        pochamaData = [data.sprites.front_default, data.sprites.front_default];
+    } catch (error) {
+        console.error(error);
+    }
+
+    return pochamaData;
+};
+
+export { fetchTwoMons, fetchPochama };
