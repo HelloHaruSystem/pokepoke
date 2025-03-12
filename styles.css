@@ -59,6 +59,23 @@ header {
   display: none;
 }
 
+#time-lives {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #time-lives ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding-left: 400px;
+  }
+  
+  .heart {
+    display: none;
+    width: 25px;
+  }
+
 #quiz-promt {
   /*display: none;*/
   align-self: center;

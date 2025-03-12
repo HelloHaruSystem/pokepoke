@@ -58,8 +58,8 @@ const getRandomQuestion = (currentPokemonSet, promter, checkAnwserFunc) => {
       return highestWeight;
     }
     case 5: {
-        promter.innerHTML = "Which Pokémon is the tallest?!";
-        return highestHeight;
+      promter.innerHTML = "Which Pokémon is the tallest?!";
+      return highestHeight;
     }
     default: {
       console.error("Quiz doesn't exists");
@@ -133,20 +133,20 @@ const highestWeight = () => {
 };
 
 const highestHeight = () => {
-    if (userChoice === -1) {
-      return false;
-    }
-    let correctChoice;
-  
-    if (userChoice === 0) {
-      correctChoice = pokemonSet[0].height > pokemonSet[1].height;
-    } else if (userChoice === 1) {
-      correctChoice = pokemonSet[1].height > pokemonSet[0].height;
-    }
-  
-    userChoice = -1;
-    return correctChoice;
-  };
+  if (userChoice === -1) {
+    return false;
+  }
+  let correctChoice;
+
+  if (userChoice === 0) {
+    correctChoice = pokemonSet[0].height > pokemonSet[1].height;
+  } else if (userChoice === 1) {
+    correctChoice = pokemonSet[1].height > pokemonSet[0].height;
+  }
+
+  userChoice = -1;
+  return correctChoice;
+};
 
 // event handlers
 leftPokemon.addEventListener("click", () => {
