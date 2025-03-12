@@ -1,11 +1,13 @@
-import { fetchTwoMons } from "../objectAndFetch/pokeRepository.js";
+import { createPokemonSet } from "../objectAndFetch/pokefactory.js";
 import { getRandomQuestion } from "./gameModes.js";
 
 // pokemon frames
 const pokemonFrame = document.getElementsByClassName("pokemon-frames")[0];
+
 // sprite elements
 const leftSprite = document.getElementsByClassName("sprite")[0];
 const rightSprite = document.getElementsByClassName("sprite")[1];
+
 // pokemon text field
 const leftPokemonText = document.getElementsByClassName("poke-facts")[0];
 const rightPokemonText = document.getElementsByClassName("poke-facts")[1];
@@ -122,7 +124,7 @@ const loseHeart = () => {
 };
 
 const getCurrentMons = async () => {
-  currentPokemons = await fetchTwoMons();
+  currentPokemons = await createPokemonSet();
 };
 
 const dispalyPokemons = () => {

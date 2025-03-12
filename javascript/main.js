@@ -1,4 +1,4 @@
-import { fetchPochama } from "./objectAndFetch/pokeRepository.js";
+import { createPochama } from "./objectAndFetch/pokefactory.js";
 import { startGameLoop } from "./game/game.js";
 
 // logo and title
@@ -11,7 +11,7 @@ const ranButton = document.getElementsByClassName("random-button")[0];
 
 // set logo
 const setLogoAndPochama = async () => {
-  const data = await fetchPochama();
+  const data = await createPochama();
 
   pochama.src = data[0];
   logo.href = data[1];
