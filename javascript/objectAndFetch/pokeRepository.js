@@ -54,7 +54,7 @@ const fetchPochama = async () => {
         }
         const data = await response.json();
 
-        pochamaData = [data.sprites.front_default, data.sprites.front_default];
+        pochamaData = [data.sprites.versions['generation-v']['black-white'].animated.front_default, data.sprites.front_default];
     } catch (error) {
         console.error(error);
     }

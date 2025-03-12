@@ -38,7 +38,7 @@ const getRandomQuestion = (currentPokemonSet, promter, checkAnwserFunc) => {
     checkAnswerCallback = checkAnwserFunc; // stores the function to evaluate result immediate
     gameActive = true;
 
-    const quizToGet = Math.floor(Math.random() * 3 + 1);
+    const quizToGet = Math.floor(Math.random() * 4 + 1);
 
     switch (quizToGet) {
         case 1: {
@@ -53,9 +53,13 @@ const getRandomQuestion = (currentPokemonSet, promter, checkAnwserFunc) => {
             promter.innerHTML = "Which Pokemon has the highest defense?!"
             return highestDefense;
         }
+        case 4: {
+            promter.innerHTML = "Which Pokémon weighs the most?!"
+            return highestWeight;
+        }
         default: {
             console.error('Quiz doesn\'t exists');
-            return () => false; // returns a fake function to avoid errors
+            return () => false; // returns a fake/dummy function to avoid errors
         }
     }
 };
@@ -107,6 +111,22 @@ const highestDefense = () => {
         userChoice = -1;
         return correctChoice;
     };
+
+    const highestWeight = () => {
+        if (userChoice === -1){
+             return false;
+        }
+        let correctChoice;
+        
+            if (userChoice === 0) {
+                correctChoice = pokemonSet[0].weight > pokemonSet[1].weight;
+            } else if (userChoice === 1) {
+                correctChoice = pokemonSet[1].weight > pokemonSet[0].weight;
+            }
+        
+            userChoice = -1;
+            return correctChoice;
+        };
 
 // event handlers
 leftPokemon.addEventListener('click', () => {
