@@ -26,24 +26,46 @@ const quizPromt = document.getElementById('quiz-promt');
 // current set of pokemons
 let currentPokemons;
 
+// current evaluate function
+let evaluateChoice;
+
 // Main game loop
 const startGameLoop = async () => {
     startGame();
     await getCurrentMons();
     dispalyPokemons();
-    quizPromt.innerHTML = 'Hello, World!';
-    getRandomQuestion(currentPokemons, quizPromt);
+    
+    evaluateChoice = getRandomQuestion(currentPokemons, quizPromt, checkAnswer);
 
-    interval = setInterval(() => {
-        
+    countDown = 5.00;
+    interval = setInterval(() => {  
         countDown-= 0.01;
         displayTimer();
 
         if (countDown <= 0) {
+            clearInterval(interval);
             gameOver();
-        }
-
+        } 
     }, 10);
+};
+
+const checkAnswer = () => {
+    // if false was returned this method will just return to avoid errors 
+    // TODO: better error handeling here and in gameModes.js
+    if (!evaluateChoice || evaluateChoice === undefined) {
+        return;
+    }
+
+    let correct = evaluateChoice();
+
+    if (correct) {
+        clearInterval(interval);
+        playerScore++;
+        startGameLoop();
+    } else {
+        clearInterval(interval);
+        gameOver();
+    }
 };
 
 const startGame = () => {

@@ -1,19 +1,69 @@
-const getRandomQuestion = (currentPokemonSet, promter) => {
+// the containers the player will click on
+const leftPokemon = document.getElementById('left-poke');
+const rightPokemon = document.getElementById('right-poke');
+
+// if 0 then left if 1 then right 0 = not yet
+let userChoice = -1;
+
+// for checking the anwser immediately
+let pokemonSet;
+let checkAnswerCallback ;
+
+// handles userinput (click)
+const userInput = (element) => {
+    if (element.id === 'left-poke') {
+        userChoice = 0;
+    } else if (element.id === 'right-poke') {
+        userChoice = 1;
+    }
+
+    // used to check immediately
+    if (checkAnswerCallback ) {
+        checkAnswerCallback();
+    }
+};
+
+const getRandomQuestion = (currentPokemonSet, promter, checkAnwserFunc) => {
+    pokemonSet = currentPokemonSet;
+    checkAnswerCallback = checkAnwserFunc; // stores the function to evaluate result immediate
+
     const quizToGet = Math.floor(Math.random() * 1 + 1);
 
     switch (quizToGet) {
         case 1: {
-            highestAttack(currentPokemonSet, promter);
-            break;
+            promter.innerHTML = "Which Pokemon has the highest attack?!"
+            return highestAttack;
         }
         default: {
             console.error('Quiz doesn\'t exists');
+            return () => false; // returns a fake function to avoid errors
         }
     }
 };
 
-const highestAttack = (currentPokemonSet, promter) => {
-    promter.innerHTML = "Which Pokemon has the highest attack?!"
+const highestAttack = () => {
+if (userChoice === -1){
+     return false;
+}
+let correctChoice;
+
+    if (userChoice === 0) {
+        correctChoice = pokemonSet[0].stats.attack > pokemonSet[1].stats.attack;
+    } else if (userChoice === 1) {
+        correctChoice = pokemonSet[1].stats.attack > pokemonSet[0].stats.attack;
+    }
+
+    userChoice = -1;
+    return correctChoice;
 };
+
+// event handlers
+leftPokemon.addEventListener('click', () => {
+    userInput(leftPokemon);
+});
+
+rightPokemon.addEventListener('click', () => {
+    userInput(rightPokemon);
+});
 
 export { getRandomQuestion };
