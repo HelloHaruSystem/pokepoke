@@ -62,7 +62,7 @@ const startGameLoop = async () => {
 
 const checkAnswer = () => {
   // if false was returned this method will just return to avoid errors
-  // TODO: better error handeling here and in gameModes.js
+  // TODO: better error handling here and in gameModes.js
   if (!evaluateChoice || evaluateChoice === undefined) {
     return;
   }
