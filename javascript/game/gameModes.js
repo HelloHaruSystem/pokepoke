@@ -75,9 +75,9 @@ const highestAttack = () => {
   let correctChoice;
 
   if (userChoice === 0) {
-    correctChoice = pokemonSet[0].stats.attack >= pokemonSet[1].stats.attack;
+    correctChoice = pokemonSet[0].attack >= pokemonSet[1].attack;
   } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].stats.attack >= pokemonSet[0].stats.attack;
+    correctChoice = pokemonSet[1].attack >= pokemonSet[0].attack;
   }
 
   userChoice = -1;
@@ -91,9 +91,9 @@ const lowestAttack = () => {
   let correctChoice;
 
   if (userChoice === 0) {
-    correctChoice = pokemonSet[0].stats.attack <= pokemonSet[1].stats.attack;
+    correctChoice = pokemonSet[0].attack <= pokemonSet[1].attack;
   } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].stats.attack <= pokemonSet[0].stats.attack;
+    correctChoice = pokemonSet[1].attack <= pokemonSet[0].attack;
   }
 
   userChoice = -1;
@@ -107,9 +107,9 @@ const highestDefense = () => {
   let correctChoice;
 
   if (userChoice === 0) {
-    correctChoice = pokemonSet[0].stats.defense >= pokemonSet[1].stats.defense;
+    correctChoice = pokemonSet[0].defense >= pokemonSet[1].defense;
   } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].stats.defense >= pokemonSet[0].stats.defense;
+    correctChoice = pokemonSet[1].defense >= pokemonSet[0].defense;
   }
 
   userChoice = -1;
