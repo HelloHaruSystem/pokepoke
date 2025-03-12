@@ -1,3 +1,5 @@
+import { questions } from "./questions.js";
+
 // the containers the player will click on
 const leftPokemon = document.getElementById("left-poke");
 const rightPokemon = document.getElementById("right-poke");
@@ -33,39 +35,21 @@ const userInput = (element) => {
   }
 };
 
-const getRandomQuestion = (currentPokemonSet, promter, checkAnwserFunc) => {
+const getRandomQuestion = (currentPokemonSet, promter, checkAnswerFunc) => {
   pokemonSet = currentPokemonSet;
-  checkAnswerCallback = checkAnwserFunc; // stores the function to evaluate result immediate
+  checkAnswerCallback = checkAnswerFunc; // stores the function to evaluate result immediate
   gameActive = true;
 
-  const quizToGet = Math.floor(Math.random() * 5 + 1);
+  const quizToGet = Math.floor(Math.random() * Object.keys(questions).length) + 1;
+  const question = questions[quizToGet];
 
-  switch (quizToGet) {
-    case 1: {
-      promter.innerHTML = "Which Pokemon has the highest attack?!";
-      return () => compareStat("attack", "highest");
-    }
-    case 2: {
-      promter.innerHTML = "Which Pokemon has the lowest attack?!";
-      return () => compareStat("attack", "lowest");
-    }
-    case 3: {
-      promter.innerHTML = "Which Pokemon has the highest defense?!";
-      return () => compareStat("defense", "highest");
-    }
-    case 4: {
-      promter.innerHTML = "Which Pokémon weighs the most?!";
-      return () => compareStat("weight", "highest");
-    }
-    case 5: {
-      promter.innerHTML = "Which Pokémon is the tallest?!";
-      return () => compareStat("height", "highest");
-    }
-    default: {
-      console.error("Quiz doesn't exists");
-      return () => false; // returns a fake/dummy function to avoid errors
-    }
+  if (!question || question === null) {
+    console.error("question doesn't exist");
+    return () => false; // return empty function for the game.js's checkAnswer function
   }
+
+  promter.innerHTML  = question.text;
+  return () => compareStat(question.stat, question.highOrLow);
 };
 
 const compareStat = (statName, highOrLow) => {
