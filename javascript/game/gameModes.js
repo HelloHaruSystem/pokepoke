@@ -9,13 +9,23 @@ let userChoice = -1;
 let pokemonSet;
 let checkAnswerCallback ;
 
+// is the game active used to prevent the user to spam click in order to avoid gameover
+let gameActive = true;
+
 // handles userinput (click)
 const userInput = (element) => {
+    // if the game is not active return. this prevents many clicks from the user
+    if (!gameActive) {
+        return;
+    }
+    
     if (element.id === 'left-poke') {
         userChoice = 0;
     } else if (element.id === 'right-poke') {
         userChoice = 1;
     }
+
+    gameActive = false;
 
     // used to check immediately
     if (checkAnswerCallback ) {
@@ -26,7 +36,8 @@ const userInput = (element) => {
 const getRandomQuestion = (currentPokemonSet, promter, checkAnwserFunc) => {
     pokemonSet = currentPokemonSet;
     checkAnswerCallback = checkAnwserFunc; // stores the function to evaluate result immediate
-
+    gameActive = true;
+    
     const quizToGet = Math.floor(Math.random() * 1 + 1);
 
     switch (quizToGet) {
