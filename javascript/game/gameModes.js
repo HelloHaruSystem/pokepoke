@@ -5,14 +5,14 @@ const rightPokemon = document.getElementById("right-poke");
 // if 0 then left if 1 then right 0 = not yet
 let userChoice = -1;
 
-// for checking the anwser immediately
+// for checking the answer immediately
 let pokemonSet;
 let checkAnswerCallback;
 
-// is the game active used to prevent the user to spam click in order to avoid gameover
+// is the game active used to prevent the user to spam click in order to avoid game over
 let gameActive = true;
 
-// handles userinput (click)
+// handles user input (click)
 const userInput = (element) => {
   // if the game is not active return. this prevents many clicks from the user
   if (!gameActive) {
@@ -43,23 +43,23 @@ const getRandomQuestion = (currentPokemonSet, promter, checkAnwserFunc) => {
   switch (quizToGet) {
     case 1: {
       promter.innerHTML = "Which Pokemon has the highest attack?!";
-      return highestAttack;
+      return () => compareStat("attack", "highest");
     }
     case 2: {
       promter.innerHTML = "Which Pokemon has the lowest attack?!";
-      return lowestAttack;
+      return () => compareStat("attack", "lowest");
     }
     case 3: {
       promter.innerHTML = "Which Pokemon has the highest defense?!";
-      return highestDefense;
+      return () => compareStat("defense", "highest");
     }
     case 4: {
       promter.innerHTML = "Which Pokémon weighs the most?!";
-      return highestWeight;
+      return () => compareStat("weight", "highest");
     }
     case 5: {
       promter.innerHTML = "Which Pokémon is the tallest?!";
-      return highestHeight;
+      return () => compareStat("height", "highest");
     }
     default: {
       console.error("Quiz doesn't exists");
@@ -68,80 +68,17 @@ const getRandomQuestion = (currentPokemonSet, promter, checkAnwserFunc) => {
   }
 };
 
-const highestAttack = () => {
+const compareStat = (statName, highOrLow) => {
   if (userChoice === -1) {
     return false;
   }
+
   let correctChoice;
 
-  if (userChoice === 0) {
-    correctChoice = pokemonSet[0].attack >= pokemonSet[1].attack;
-  } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].attack >= pokemonSet[0].attack;
-  }
-
-  userChoice = -1;
-  return correctChoice;
-};
-
-const lowestAttack = () => {
-  if (userChoice === -1) {
-    return false;
-  }
-  let correctChoice;
-
-  if (userChoice === 0) {
-    correctChoice = pokemonSet[0].attack <= pokemonSet[1].attack;
-  } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].attack <= pokemonSet[0].attack;
-  }
-
-  userChoice = -1;
-  return correctChoice;
-};
-
-const highestDefense = () => {
-  if (userChoice === -1) {
-    return false;
-  }
-  let correctChoice;
-
-  if (userChoice === 0) {
-    correctChoice = pokemonSet[0].defense >= pokemonSet[1].defense;
-  } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].defense >= pokemonSet[0].defense;
-  }
-
-  userChoice = -1;
-  return correctChoice;
-};
-
-const highestWeight = () => {
-  if (userChoice === -1) {
-    return false;
-  }
-  let correctChoice;
-
-  if (userChoice === 0) {
-    correctChoice = pokemonSet[0].weight >= pokemonSet[1].weight;
-  } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].weight >= pokemonSet[0].weight;
-  }
-
-  userChoice = -1;
-  return correctChoice;
-};
-
-const highestHeight = () => {
-  if (userChoice === -1) {
-    return false;
-  }
-  let correctChoice;
-
-  if (userChoice === 0) {
-    correctChoice = pokemonSet[0].height >= pokemonSet[1].height;
-  } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].height >= pokemonSet[0].height;
+  if (highOrLow === "highest") {
+    correctChoice = pokemonSet[userChoice][statName] >= pokemonSet[1 - userChoice][statName];
+  } else if (highOrLow === "lowest") {
+    correctChoice = pokemonSet[userChoice][statName] <= pokemonSet[1 - userChoice][statName];
   }
 
   userChoice = -1;
