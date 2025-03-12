@@ -113,4 +113,9 @@ const dispalyPokemons = () => {
     pokemonFrame.style.display = 'flex';
 };
 
+//event handlers
+ranButton.addEventListener('click', () => {
+    playerScore = 0;
+});
+
 export { startGameLoop };
