@@ -40,7 +40,7 @@ const getRandomQuestion = (currentPokemonSet, promter, checkAnswerFunc) => {
   checkAnswerCallback = checkAnswerFunc; // stores the function to evaluate result immediate
   gameActive = true;
 
-  const quizToGet = Math.floor(Math.random() * Object.keys(questions).length) + 1;
+  const quizToGet = Math.floor(Math.random() * Object.keys(questions).length);
   const question = questions[quizToGet];
 
   if (!question || question === null) {
