@@ -1,9 +1,11 @@
 import { fetchPochama } from "./objectAndFetch/pokeRepository.js";
 import { startGameLoop } from "./game/game.js";
 
-// logo and title move to a ui class at some points
+// logo and title
+// TODO: move to a ui class at some points
 const pochama = document.getElementById('pochama');
 const logo = document.getElementById('logo');
+
 // gameStart button
 const ranButton = document.getElementsByClassName('random-button')[0];
 

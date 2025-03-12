@@ -37,13 +37,21 @@ const getRandomQuestion = (currentPokemonSet, promter, checkAnwserFunc) => {
     pokemonSet = currentPokemonSet;
     checkAnswerCallback = checkAnwserFunc; // stores the function to evaluate result immediate
     gameActive = true;
-    
-    const quizToGet = Math.floor(Math.random() * 1 + 1);
+
+    const quizToGet = Math.floor(Math.random() * 3 + 1);
 
     switch (quizToGet) {
         case 1: {
             promter.innerHTML = "Which Pokemon has the highest attack?!"
             return highestAttack;
+        }
+        case 2: {
+            promter.innerHTML = "Which Pokemon has the lowest attack?!"
+            return lowestAttack;
+        }
+        case 3: {
+            promter.innerHTML = "Which Pokemon has the highest defense?!"
+            return highestDefense;
         }
         default: {
             console.error('Quiz doesn\'t exists');
@@ -67,6 +75,38 @@ let correctChoice;
     userChoice = -1;
     return correctChoice;
 };
+
+const lowestAttack = () => {
+    if (userChoice === -1){
+         return false;
+    }
+    let correctChoice;
+    
+        if (userChoice === 0) {
+            correctChoice = pokemonSet[0].stats.attack < pokemonSet[1].stats.attack;
+        } else if (userChoice === 1) {
+            correctChoice = pokemonSet[1].stats.attack < pokemonSet[0].stats.attack;
+        }
+    
+        userChoice = -1;
+        return correctChoice;
+    };
+
+const highestDefense = () => {
+    if (userChoice === -1){
+         return false;
+    }
+    let correctChoice;
+    
+        if (userChoice === 0) {
+            correctChoice = pokemonSet[0].stats.defense > pokemonSet[1].stats.defense;
+        } else if (userChoice === 1) {
+            correctChoice = pokemonSet[1].stats.defense > pokemonSet[0].stats.defense;
+        }
+    
+        userChoice = -1;
+        return correctChoice;
+    };
 
 // event handlers
 leftPokemon.addEventListener('click', () => {
