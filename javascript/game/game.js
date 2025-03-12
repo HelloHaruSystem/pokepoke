@@ -83,6 +83,7 @@ const checkAnswer = () => {
 };
 
 const startGame = () => {
+  quizPromt.style.display = 'block';
   ranButton.style.display = "none";
   score.style.display = "block";
   displayTimer();
