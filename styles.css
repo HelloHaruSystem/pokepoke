@@ -36,6 +36,17 @@ header {
 
 .navbar ul li {
   padding: 0 10px;
+  font-size: large;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar ul li a:hover {
+  color: blue;
+  text-decoration-line: underline;
 }
 
 /*main container*/
@@ -60,21 +71,21 @@ header {
 }
 
 #time-lives {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  #time-lives ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    padding-left: 400px;
-  }
-  
-  .heart {
-    display: none;
-    width: 25px;
-  }
+  display: flex;
+  flex-direction: row;
+}
+
+#time-lives ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding-left: 400px;
+}
+
+.heart {
+  display: none;
+  width: 25px;
+}
 
 #quiz-promt {
   /*display: none;*/

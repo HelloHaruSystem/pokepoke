@@ -16,7 +16,7 @@ const ranButton = document.getElementsByClassName("random-button")[0];
 const score = document.getElementById("score");
 
 // hearts representing lives
-const hearts = document.querySelectorAll('.heart');
+const hearts = document.querySelectorAll(".heart");
 
 // countdown and interval used for the timer plus the players score aswell as a heart counter
 let countDown = 5.0;
@@ -75,9 +75,9 @@ const checkAnswer = () => {
     clearInterval(interval);
     loseHeart();
     if (heartCounter > 0) {
-        startGameLoop();
+      startGameLoop();
     } else {
-        gameOver();
+      gameOver();
     }
   }
 };
@@ -107,17 +107,17 @@ const displayTimer = () => {
 };
 
 const displayHearts = () => {
-    hearts.forEach(heart => {
-        heart.style.display = 'block';
-    })
+  hearts.forEach((heart) => {
+    heart.style.display = "block";
+  });
 };
 
 const loseHeart = () => {
-    if (heartCounter > 0) {
-        const heartToLose = hearts[heartCounter - 1];
-        heartToLose.style.display = 'none';
-        heartCounter--;
-    }
+  if (heartCounter > 0) {
+    const heartToLose = hearts[heartCounter - 1];
+    heartToLose.style.display = "none";
+    heartCounter--;
+  }
 };
 
 const getCurrentMons = async () => {

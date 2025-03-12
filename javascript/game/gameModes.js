@@ -75,9 +75,9 @@ const highestAttack = () => {
   let correctChoice;
 
   if (userChoice === 0) {
-    correctChoice = pokemonSet[0].stats.attack > pokemonSet[1].stats.attack;
+    correctChoice = pokemonSet[0].stats.attack >= pokemonSet[1].stats.attack;
   } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].stats.attack > pokemonSet[0].stats.attack;
+    correctChoice = pokemonSet[1].stats.attack >= pokemonSet[0].stats.attack;
   }
 
   userChoice = -1;
@@ -91,9 +91,9 @@ const lowestAttack = () => {
   let correctChoice;
 
   if (userChoice === 0) {
-    correctChoice = pokemonSet[0].stats.attack < pokemonSet[1].stats.attack;
+    correctChoice = pokemonSet[0].stats.attack <= pokemonSet[1].stats.attack;
   } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].stats.attack < pokemonSet[0].stats.attack;
+    correctChoice = pokemonSet[1].stats.attack <= pokemonSet[0].stats.attack;
   }
 
   userChoice = -1;
@@ -107,9 +107,9 @@ const highestDefense = () => {
   let correctChoice;
 
   if (userChoice === 0) {
-    correctChoice = pokemonSet[0].stats.defense > pokemonSet[1].stats.defense;
+    correctChoice = pokemonSet[0].stats.defense >= pokemonSet[1].stats.defense;
   } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].stats.defense > pokemonSet[0].stats.defense;
+    correctChoice = pokemonSet[1].stats.defense >= pokemonSet[0].stats.defense;
   }
 
   userChoice = -1;
@@ -123,9 +123,9 @@ const highestWeight = () => {
   let correctChoice;
 
   if (userChoice === 0) {
-    correctChoice = pokemonSet[0].weight > pokemonSet[1].weight;
+    correctChoice = pokemonSet[0].weight >= pokemonSet[1].weight;
   } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].weight > pokemonSet[0].weight;
+    correctChoice = pokemonSet[1].weight >= pokemonSet[0].weight;
   }
 
   userChoice = -1;
@@ -139,9 +139,9 @@ const highestHeight = () => {
   let correctChoice;
 
   if (userChoice === 0) {
-    correctChoice = pokemonSet[0].height > pokemonSet[1].height;
+    correctChoice = pokemonSet[0].height >= pokemonSet[1].height;
   } else if (userChoice === 1) {
-    correctChoice = pokemonSet[1].height > pokemonSet[0].height;
+    correctChoice = pokemonSet[1].height >= pokemonSet[0].height;
   }
 
   userChoice = -1;
